@@ -1,0 +1,29 @@
+# Projeto Programação para Web 2 (2026.1)
+
+O desenvolvimento desse projeto deverá ser focado em desenvolver uma aplicação _frontend_ para **Gestão Financeira Pessoal**. Cada **grupo de até 4 alunos** deve entregar sua aplicação web funcionando, praticando todos os tópicos da stack vistos em cada etapa.
+
+Os serviços de _backend_ já estão construídos com Java 21 e Spring Boot. Não é necessário entendimento dessa API e esta será mantida pelo professor da disciplina caso sejam necessários alguns ajustes.
+
+## Etapa 1 - Fundação
+
+Nesta etapa, cada grupo deve implementar os requisitos funcionais (RFs) abaixo utilizando as tecnologias **React**, **React Router** e **Redux**.
+
+Tópicos a serem pesquisados:
+
+- **Redux Thunks** - https://redux.js.org/usage/writing-logic-thunks
+
+Requisitos a serem implementados:
+
+- **RF01**, **RF02**, **RF03** e **RF04** - Consultar [Documento de Requisitos](REQUISITOS.md)
+
+## Etapa 2 - Microfrontends, Testes e Service Workers
+
+Nesta segunda etapa, cada grupo deve focar em implementar microfrontends, testes automatizados e service workers para a aplicação.
+
+Tópicos a serem pesquisados:
+
+- A definir
+
+Requisitos a serem implementados:
+
+- **RF05**, **RF06**, **RF07** - A definir
