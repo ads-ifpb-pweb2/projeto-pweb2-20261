@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "../../app/store";
 import { register } from "../../feature/auth/authThunks";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Register() {
   const [name, setName] = useState("");
@@ -72,6 +72,10 @@ function Register() {
         </div>
 
         <button type="submit">Cadastrar</button>
+
+        <p>
+            Já possui conta? <Link to="/login">Entrar</Link>
+        </p>
 
         {error && (
           <p style={{ color: "red" }}>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "../../app/store";
 import { login } from "../../feature/auth/authThunks";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -31,7 +31,7 @@ function Login() {
         })
       ).unwrap();
 
-      navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       console.error("Erro ao fazer login", error);
     }
@@ -61,6 +61,10 @@ function Login() {
         </div>
 
         <button type="submit">Entrar</button>
+
+        <p>
+            Não possui conta? <Link to="/register">Cadastre-se</Link>
+        </p>
 
         {error && (
           <p style={{ color: "red" }}>
