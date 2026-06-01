@@ -2,21 +2,29 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import type { AppDispatch } from "../../app/store";
 import { login } from "../../feature/auth/authThunks";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    dispatch(
-       login({
-        username,
-        password,
- })
-);
+    try {
+        await dispatch(
+            login({
+                username,
+                password
+            })
+        ).unwrap();
+
+        navigate("/dashboard");
+    } catch (error) {
+      console.error("Erro ao fazer login", error);
+    }
   };
 
   return (
