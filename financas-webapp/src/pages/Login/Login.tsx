@@ -1,27 +1,37 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import type { AppDispatch } from "../../app/store";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../../app/store";
 import { login } from "../../feature/auth/authThunks";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+
+  const error = useSelector(
+    (state: RootState) => state.auth.error
+  );
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    try {
-        await dispatch(
-            login({
-                username,
-                password
-            })
-        ).unwrap();
+    if (!username || !password) {
+      alert("Preencha todos os campos");
+      return;
+    }
 
-        navigate("/dashboard");
+    try {
+      await dispatch(
+        login({
+          username,
+          password,
+        })
+      ).unwrap();
+
+      navigate("/dashboard");
     } catch (error) {
       console.error("Erro ao fazer login", error);
     }
@@ -51,6 +61,12 @@ function Login() {
         </div>
 
         <button type="submit">Entrar</button>
+
+        {error && (
+          <p style={{ color: "red" }}>
+            {error}
+          </p>
+        )}
       </form>
     </div>
   );
